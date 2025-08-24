@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 
 interface ClientTodo extends Prisma.TodoGetPayload<{}> {
   dueDate: Date | null;
+  imageUrl: string | null; // Add this line for the image URL
 }
 
 export default function Home() {
@@ -98,6 +99,11 @@ export default function Home() {
                     Due: {new Date(todo.dueDate).toLocaleDateString()}
                   </span>
                 )}
+                {todo.imageUrl ? (
+                  <img src={todo.imageUrl} alt={todo.title} className="w-24 h-24 object-cover ml-4 rounded" />
+                ) : (todo.imageUrl === null && todo.title) ? (
+                  <span className="ml-4 text-gray-500">Loading image...</span> // Basic loading indicator
+                ) : null}
                 <button
                   onClick={() => handleDeleteTodo(todo.id)}
                   className="text-red-500 hover:text-red-700 transition duration-300"
