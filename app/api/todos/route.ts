@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
+import type { Prisma } from '@prisma/client'; // Import Prisma as a type namespace
 
 export async function GET() {
   try {
@@ -16,14 +17,16 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
-    const { title } = await request.json();
+    const { title, dueDate } = await request.json();
     if (!title || title.trim() === '') {
       return NextResponse.json({ error: 'Title is required' }, { status: 400 });
     }
+    const todoData: Prisma.TodoCreateInput = {
+      title,
+      dueDate: dueDate ? new Date(dueDate) : null,
+    };
     const todo = await prisma.todo.create({
-      data: {
-        title,
-      },
+      data: todoData,
     });
     return NextResponse.json(todo, { status: 201 });
   } catch (error) {
