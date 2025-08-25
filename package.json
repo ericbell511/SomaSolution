@@ -9,11 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@dagrejs/dagre": "^1.1.5",
     "@next/font": "^14.2.15",
     "@prisma/client": "^5.20.0",
+    "@xyflow/react": "^12.8.4",
+    "mermaid": "^11.10.1",
     "next": "14.2.15",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "reactflow": "^11.11.4"
   },
   "devDependencies": {
     "@types/node": "^20",

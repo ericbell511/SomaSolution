@@ -53,3 +53,24 @@ Implement a task dependency system that allows tasks to depend on other tasks. T
 3. Submit a link to your repository in the application form.
 
 Thanks for your time and effort. We'll be in touch soon!
+
+## Solution:
+
+### Part 1: Due Dates
+
+Amended the prisma db to have a column of due_dates and sent the date from the front end date selector to be stored and then rendered. Now, when you create a new task, you can easily set a due date. And to keep you on track, any task whose due date has passed will have its date highlighted in a clear red.
+
+### Part 2: Image Generation
+
+When you create a todo, the app now intelligently searches for a relevant image based on your task description. This image is then displayed right within the todo item. While the image is being fetched (it's pretty quick), you'll see a little 'Loading image...' message. A personal PEXEL_API_KEY is required.
+
+### Part 3: Task Dependencies
+
+Amended the db again now to included dependencies between tasks. I've added checks on both the frontend and backend to prevent you from creating circular dependencies (where Task A depends on B, and B somehow ends up depending on A). If you try to create a loop, the system will let you know with a clear message, even telling you which specific tasks are causing the cycle.
+The app now calculates the earliest possible start date for each task based on its dependencies. More specifically, for a task with multiple dependencies, its earliest start date is the latest completion date of all the tasks it depends on. Additionally, it identifies the 'critical path' – a sequence of tasks whose delays would directly impact the project's overall completion. Critical tasks are visually highlighted in red on the graph.
+Finally, using reactflow and @dagrejs/dagre you are able to visualize all the tasks and their dependencies. Each todo is a node, and the relationships are edges. You can click on any node, and it will highlight itself, as well as its direct dependencies, while keeping critical path relations in red.
+
+
+![Add Todo And Dependencies](assets/img1.png)
+![Display Todos](assets/img1.png)
+![Visualize Dependency Graph of Tasks](assets/img1.png)
