@@ -556,13 +556,13 @@ export default function Home() {
 
                     {todo.dependsOn && todo.dependsOn.length > 0 && (
                       <div className="text-sm text-gray-500 mt-2">
-                        <strong>Needs to be done Before:</strong> {todo.dependsOn.map((dep) => dep.title).join(', ')}
+                        <strong>Needs to be done After:</strong> {todo.dependsOn.map((dep) => dep.title).join(', ')}
                       </div>
                     )}
 
                     {todo.dependentTasks && todo.dependentTasks.length > 0 && (
                       <div className="text-sm text-gray-500 mt-2">
-                        <strong>Needs to be done After:</strong> {todo.dependentTasks.map((dep) => dep.title).join(', ')}
+                        <strong>Needs to be done Before:</strong> {todo.dependentTasks.map((dep) => dep.title).join(', ')}
                       </div>
                     )}
                   </div>
