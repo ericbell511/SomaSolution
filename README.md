@@ -72,5 +72,5 @@ Finally, using reactflow and @dagrejs/dagre you are able to visualize all the ta
 
 
 ![Add Todo And Dependencies](assets/img1.png)
-![Display Todos](assets/img1.png)
-![Visualize Dependency Graph of Tasks](assets/img1.png)
+![Display Todos](assets/img2.png)
+![Visualize Dependency Graph of Tasks](assets/img3.png)
